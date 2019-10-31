@@ -34,7 +34,7 @@
             </div>
 
             <h3>Question 1</h3>
-            <h5></h5>
+            <h5>You prefer to go on adventures as opposed to staying home.</h5>
             <div class="form-group">
                 <select class="form-control" id="question1">
                     <option>1 (strongly disagree)</option>
@@ -46,7 +46,7 @@
             </div>
 
             <h3>Question 2</h3>
-            <h5>Y</h5>
+            <h5>You feel happy in a large group of people.</h5>
             <div class="form-group">
                 <select class="form-control" id="question2">
                     <option>1 (strongly disagree)</option>
@@ -58,7 +58,7 @@
             </div>
 
             <h3>Question 3</h3>
-            <h5>Y</h5>
+            <h5>You respect others' opinions, regardless of whether or not they back them up with facts.</h5>
             <div class="form-group">
                 <select class="form-control" id="question3">
                     <option>1 (strongly disagree)</option>
@@ -70,7 +70,7 @@
             </div>
 
             <h3>Question 4</h3>
-            <h5>Y</h5>
+            <h5>You make an effort to validate people's experiences and emotions.</h5>
             <div class="form-group">
                 <select class="form-control" id="question4">
                     <option>1 (strongly disagree)</option>
@@ -82,7 +82,7 @@
             </div>
 
             <h3>Question 5</h3>
-            <h5>Y</h5>
+            <h5>It is often difficult to get you upset.</h5>
             <div class="form-group">
                 <select class="form-control" id="question5">
                     <option>1 (strongly disagree)</option>
@@ -94,7 +94,7 @@
             </div>
 
             <h3>Question 6</h3>
-            <h5>Y</h5>
+            <h5>People can rely on you to do the correct thing.</h5>
             <div class="form-group">
                 <select class="form-control" id="question6">
                     <option>1 (strongly disagree)</option>
@@ -106,7 +106,7 @@
             </div>
 
             <h3>Question 7</h3>
-            <h5>Y</h5>
+            <h5>You can spend hours and hours talking about the universe, philosophy, and personal experiences.</h5>
             <div class="form-group">
                 <select class="form-control" id="question7">
                     <option>1 (strongly disagree)</option>
@@ -118,7 +118,7 @@
             </div>
 
             <h3>Question 8</h3>
-            <h5>Y</h5>
+            <h5>When you gaze out at the stars, you wonder about greater than life things.</h5>
             <div class="form-group">
                 <select class="form-control" id="question8">
                     <option>1 (strongly disagree)</option>
@@ -130,7 +130,7 @@
             </div>
 
             <h3>Question 9</h3>
-            <h5>Y</h5>
+            <h5>You enjoy learning new hobbies, and spending time outside your comfort zone.</h5>
             <div class="form-group">
                 <select class="form-control" id="question9">
                     <option>1 (strongly disagree)</option>
@@ -142,7 +142,7 @@
             </div>
 
             <h3>Question 10</h3>
-            <h5>Y</h5>
+            <h5>You prefer honesty over the possibility of hurting feelings.</h5>
             <div class="form-group">
                 <select class="form-control" id="question10">
                     <option>1 (strongly disagree)</option>
@@ -154,11 +154,38 @@
             </div>
 
         </form>
-        <button type="button" class="btn btn-info btn-lg btn-block">Submit</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Your match!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="match-name">
+                        
+                    </div>
+                    <div class="modal-body" id="img">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Button trigger modal -->
+
+        <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal"
+            data-target="#exampleModal" id="submit">Submit</button>
     </div>
 </body>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     // Chosen CSS
     var config = {
         ".chosen-select": {},
@@ -207,7 +234,7 @@
             // Create an object for the user"s data
             var userData = {
                 name: $("#name").val(),
-                photo: $("#profilleP").val(),
+                photo: $("#profillePicture").val(),
                 scores: [
                     $("#question1").val(),
                     $("#question2").val(),
@@ -227,7 +254,7 @@
 
                 // Grab the result from the AJAX post so that the best match's name and photo are displayed.
                 $("#match-name").text(data.name);
-                $("#match-img").attr("src", data.photo);
+                $("#img").attr("src", data.photo);
 
                 // Show the modal with the best match
                 $("#results-modal").modal("toggle");
@@ -237,6 +264,6 @@
             alert("Please fill out all fields before submitting!");
         }
     });
-</script> -->
+</script>
 
 </html>
