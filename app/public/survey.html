@@ -167,7 +167,7 @@
                         </button>
                     </div>
                     <h2 class="modal-body" id="matchName"></h2>
-                    <img class="modal-body" id="img" src="">
+                    <img class="modal-body" id="img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
@@ -191,7 +191,7 @@
         // Create an object for the user's data
         var userData = {
             name: $("#name").val(),
-            photo: $("#profillePicture").val(),
+            photo: $("#img").val(),
             scores: [
                 $("#question1").val(),
                 $("#question2").val(),
@@ -214,7 +214,7 @@
             function (data) {
                 if (data) {
                     alert("You have a match!");
-                    console.log(data);
+                    // console.log(data);
                 }
 
             });
@@ -231,8 +231,9 @@
                 // console.log("------------------------------------");
                 console.log(friendsData);
                 // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                $("#matchName").text(friendsData[1].name);
-                $("#img").attr("src", data.photo);
+                console.log(friendsData[friendsData.length-1].name);
+                $("#matchName").text(friendsData[friendsData.length-1].name);
+                $("#img").attr("src", friendsData[friendsData.length-1].photo);
 
                 // Show the modal with the best match
                 $("#exampleModal").modal("toggle");

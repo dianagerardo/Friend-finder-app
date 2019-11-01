@@ -13,65 +13,58 @@ module.exports = function (app) {
 
     app.post("/api/friend", function (req, res) {
         let you = req.body;
-        friendsData.push(match);
+        friendsData.push(you)
         res.json(true);
         console.log(you);
         // console.log(friendsData[0].scores)
+        youNums = [];
+        function findNums(arr) {
+            for (let j = 0; j < arr.length; j++) {
 
-        let user1 = friendsData[0];
-        let user1Numbers = user1.scores
-        let user2 = you;
-        let user2Numbers = user2.scores
+                let nums = parseFloat(arr[j]);
+                console.log(nums);
+                youNums.push(nums)
 
-        let user1Scores = [];
-        let user2Scores = [];
-
-        for (let i = 0; i < user1Numbers.length; i++) {
-
-            let numbers1 = parseFloat(user1Numbers[i]);
-            console.log(numbers1);
-            user1Scores.push(numbers1);
-
+            }
+            console.log("::::::::::::::::::::::::")
         }
 
-        console.log("------------------")
+        findNums(you.scores);
 
-        for (let j = 0; j < user2Numbers.length; j++) {
+        // // Compare the user's number
 
-            let numbers2 = parseFloat(user2Numbers[j]);
-            console.log(numbers2);
-            user2Scores.push(numbers2);
+        // let difference = [];
+        matchDiff = [];
+        function findDiff(arr1, arr2) {
+            for (let i = 0; i < arr1.length; i++) {
+                let diff = Math.abs(arr1[i] - arr2[i]);
+                console.log(diff);
+                matchDiff.push(diff);
+            }
 
-        }
+            console.log("-----------------------")
 
-        console.log("::::::::::::::::::::::::")
+        };
 
-        // Compare the user's number
-
-        let difference = [];
-
-        for (let k = 0; k < user1Scores.length; k++) {
-            let diff = Math.abs(user1Scores[k] - user2Scores[k]);
-            // console.log(diff);
-            difference.push(diff);
-            // console.log(difference);
-
-        }
-
+        
+        findDiff(youNums, friendsData[0].scores);
+        
 
         function sum(num1, num2) {
             return num1 + num2
         };
 
-        let totalDifference = difference.reduce(sum);
+        let totalDifference = matchDiff.reduce(sum);
 
         console.log(totalDifference);
 
         let bestMatch = [];
 
-        if(totalDifference>10){
-            bestMatch.push(user1.name);
+        if (totalDifference > 10) {
+            bestMatch.push(name);
         }
+
+        friendsData.push(bestMatch);
 
     });
 
